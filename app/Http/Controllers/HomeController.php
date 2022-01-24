@@ -64,13 +64,26 @@ class HomeController extends Controller
     {
         $posts = $request->all();
 
-        dd($posts);
+        //dd($posts);
         //dd dump dieの略　メソッドの引数に取った値を展開して止める　→　データの確認をするためのデバッグ関数
 
         Memo::where('id', $posts['memo_id'])->update(['content' => $posts['content']]);
 
         return redirect( route('home') );
     }
+
+    public function destroy(Request $request)
+    {
+        $posts = $request->all();
+
+
+        //dd dump dieの略　メソッドの引数に取った値を展開して止める　→　データの確認をするためのデバッグ関数
+
+        Memo::where('id', $posts['memo_id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
+
+        return redirect( route('home') );
+    }
+
 
 
 }

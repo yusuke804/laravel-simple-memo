@@ -41,6 +41,8 @@ class HomeController extends Controller
     {
         $posts = $request->all();
 
+        $request->validate(['content' => 'required']);
+
         //dd dump dieの略　メソッドの引数に取った値を展開して止める　→　データの確認をするためのデバッグ関数
 
         //-----ここからトランザクションを開始-----
@@ -96,6 +98,8 @@ class HomeController extends Controller
         $posts = $request->all();
         //dd($posts);
         //dd dump dieの略　メソッドの引数に取った値を展開して止める　→　データの確認をするためのデバッグ関数
+
+        $request->validate(['content' => 'required']);
 
         // トランザクションスタート
         DB::transaction(function() use($posts){

@@ -76,14 +76,17 @@
         </nav>
 
 
-
         <main class="">
           <div class="row">
 						<div class="col-md-2 p-0">
 							<div class="card">
-								<div class="card-header">左カラム</div>
+								<div class="card-header">タグ一覧</div>
 								<div class="card-body">
-									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="/" class="card-text">全て表示<br></a>
+                                @foreach($tags as $tag)
+                                    <a href="/?tag={{$tag['id']}}" class="card-text">{{ $tag['name'] }} <br></a>
+                                @endforeach
+
 								</div>
 							</div>
 						</div>
